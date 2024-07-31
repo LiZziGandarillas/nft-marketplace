@@ -1,0 +1,24 @@
+{
+    "description": "Certificado para el curso de Solidty dcitado en la UNIVALLE La Paz en el mes de Julio.", 
+    "external_url": "https://ethbolivia.com/",
+    "image": "https://emerald-working-owl-716.mypinata.cloud/ipfs/QmPL83iLrs2VKZpGwfckrRmZ99VvbiQBiQBaVnrVpWBHv4", 
+    "name": "Tricolor Calico Cat",
+    "attributes": [ 
+        {
+            "trait_type": "Type", 
+            "value": "Cat"
+        }, 
+            {
+            "trait_type": "Eyes", 
+            "value": "Big"
+        }, 
+            {
+            "trait_type": "Color", 
+            "value": "White, black and orange"
+        }, 
+            {
+            "trait_type": "Cute level", 
+            "value": 7
+        }
+     ]
+  }
