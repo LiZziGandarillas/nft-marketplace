@@ -159,6 +159,19 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
+          name: "buyNFT",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
           name: "getApproved",
           outputs: [
             {

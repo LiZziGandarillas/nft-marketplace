@@ -12,7 +12,19 @@ contract MyNft is ERC721, ERC721URIStorage, Ownable {
     constructor(address initialOwner)
         ERC721("CursoSolidity2024ETHB", "MTK")
         Ownable()
-    {}
+    {
+        transferOwnership(initialOwner);
+        mintInitialTokens();
+    }
+
+    function mintInitialTokens() internal onlyOwner {
+        _mintAndSetURI(0x70997970C51812dc3A010C7d01b50e0d17dc79C8, "https://emerald-working-owl-716.mypinata.cloud/ipfs/QmUfxqsbhZVcMX3MnKwv632EpCRXSQB5fb1xxAjkywwadT");
+        _mintAndSetURI(0x70997970C51812dc3A010C7d01b50e0d17dc79C8, "https://emerald-working-owl-716.mypinata.cloud/ipfs/Qmdu2owj9iD4z6dQPAEKPmUAtFz4pDoGpUzfx1zYqyFvME");
+    }
+
+    function _mintAndSetURI(address to, string memory uri) internal {
+        safeMint(to, uri);
+    }
 
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _nextTokenId++;
@@ -40,7 +52,15 @@ contract MyNft is ERC721, ERC721URIStorage, Ownable {
         return super.supportsInterface(interfaceId);
     }
 
-	function _burn(uint256 tokenId) internal override (ERC721, ERC721URIStorage) {
+    function _burn(uint256 tokenId) internal override (ERC721, ERC721URIStorage) {
         super._burn(tokenId);
+    }
+
+    function buyNFT(uint256 tokenId) public payable {
+        require(msg.value >= 0.1 ether, "Insufficient payment");
+        address owner = ownerOf(tokenId);
+        require(owner != msg.sender, "Cannot buy your own NFT");
+        
+        _transfer(owner, msg.sender, tokenId);
     }
 }
